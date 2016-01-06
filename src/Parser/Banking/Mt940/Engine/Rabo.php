@@ -96,6 +96,16 @@ class Rabo extends Engine
         return 0;
     }
 
+   /*  protected function sanitizeAccountName($string)
+    {
+        $account = parent::sanitizeAccount($string);
+        echo "account: ".$account.' - ';
+        if($account=="PNONREF"){
+            $account="";
+        }
+        return $account;
+    }*/
+
     /**
      * Overloaded: Rabo uses longer strings for accountnumbers
      * @inheritdoc
@@ -105,6 +115,9 @@ class Rabo extends Engine
         $account = parent::sanitizeAccount($string);
         if (strlen($account) > 20 && strpos($account, '80000') == 0) {
             $account = substr($account, 5);
+        }
+         if ($account==="PNONREF") {
+            $account = "";
         }
 
         return $account;

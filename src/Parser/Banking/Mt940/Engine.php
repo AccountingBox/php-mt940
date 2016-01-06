@@ -64,6 +64,9 @@ abstract class Engine
         if (strpos($secondline, ':25:TRIODOSBANK') !== false) {
             return new Engine\Triodos;
         }
+        if (strpos($firstline, 'SNSB') !== false) {
+            return new Engine\Sns;
+        }
 
         trigger_error('Unknown mt940 parser loaded, thus reverted to default', E_USER_NOTICE);
 

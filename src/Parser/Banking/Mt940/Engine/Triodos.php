@@ -75,6 +75,16 @@ class Triodos extends Engine
         return $this->sanitizeAccount($account);
     }
 
+     protected function sanitizeAccount($string)
+    {
+        $account = parent::sanitizeAccount($string);
+        if (strpos($account, '21') === 0) {
+        $account = substr($string, 2);
+        }
+
+        return $account;
+    }
+
     /**
      * Overloaded: It might be IBAN or not and depending on that return a different part of the description
      *
