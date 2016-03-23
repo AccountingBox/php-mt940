@@ -67,7 +67,9 @@ abstract class Engine
         if (strpos($firstline, 'SNSB') !== false) {
             return new Engine\Sns;
         }
-
+        if(strpos($secondline,':25:NL30ABNA0524590958')!==false){
+            return new Engine\Mollie;
+        }
         trigger_error('Unknown mt940 parser loaded, thus reverted to default', E_USER_NOTICE);
 
         return new Engine\Unknown;

@@ -32,7 +32,7 @@ class Abn extends Engine
         if (empty($results)) {
             $giroMatch = $ibanMatch = [];
          preg_match('/IBAN:(.*)/m', $this->getCurrentTransactionData(),$ibanMatch);
-        print_r($ibanMatch);
+      //  print_r($ibanMatch);
             if (preg_match('/^:86:GIRO(.{9})/im', $this->getCurrentTransactionData(), $giroMatch)
                     && !empty($giroMatch[1])
             ) {
@@ -41,7 +41,7 @@ class Abn extends Engine
             if (preg_match('/IBAN:(.*)/m', $this->getCurrentTransactionData(), $ibanMatch)
                     && !empty($ibanMatch[1])
             ) {
-                echo $this->getCurrentTransactionData();
+               // echo $this->getCurrentTransactionData();
     
                 $results = $ibanMatch[1];
                //  echo $ibanMatch[1];
@@ -62,7 +62,7 @@ class Abn extends Engine
             }
         }
 
-        echo $results."\n";
+      //  echo $results."\n";
 
         return $this->sanitizeAccount($results);
     }
